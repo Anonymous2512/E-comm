@@ -15,29 +15,29 @@ Session-based product recommender for Inditex/Zara e-commerce, built for a NUWE 
 
 3/3 tasks complete. NDCG@5 on the offline validation set jumped **35×** from baseline.
 
-| Task | Description | Points | Result |
-|------|-------------|--------|--------|
-| 1. Data Queries | 7 SQL queries on interactions, products, users | 100 | 7/7 |
-| 2. Session Metrics | `get_session_metrics()` function | 100 | 8/8 tests pass |
-| 3. Recommender | Top-5 per session, NDCG@5 | 900 | **NDCG@5 = 0.377 · Hit Rate@5 = 76.0%** |
+| Task               | Description                                    | Points | Result                                  |
+| ------------------ | ---------------------------------------------- | ------ | --------------------------------------- |
+| 1. Data Queries    | 7 SQL queries on interactions, products, users | 100    | 7/7                                     |
+| 2. Session Metrics | `get_session_metrics()` function               | 100    | 8/8 tests pass                          |
+| 3. Recommender     | Top-5 per session, NDCG@5                      | 900    | **NDCG@5 = 0.377 · Hit Rate@5 = 76.0%** |
 
-| Metric | Baseline (top-5 popularity) | v1 (binary classifier) | v2 (LambdaRank, improved) |
-|--------|------------------------------|------------------------|---------------------------|
-| NDCG@5 | ~0.01 | 0.214 | **0.377** |
-| Hit Rate@5 | ~5% | 45.5% | **76.0%** |
-| Sessions with hit | ~50 | 455 | **760 / 1,000** |
+| Metric            | Baseline (top-5 popularity) | v1 (binary classifier) | v2 (LambdaRank, improved) |
+| ----------------- | --------------------------- | ---------------------- | ------------------------- |
+| NDCG@5            | ~0.01                       | 0.214                  | **0.377**                 |
+| Hit Rate@5        | ~5%                         | 45.5%                  | **76.0%**                 |
+| Sessions with hit | ~50                         | 455                    | **760 / 1,000**           |
 
 > Validation on 1,000 held-out training sessions with ≥5 cart additions. Because the co-visitation matrix is built from the same training data, scores are optimistic; real test performance may differ.
 
 ## Documentation
 
-| Guide | Description |
-|-------|-------------|
-| [Data Pipeline](docs/1-data-pipeline.md) | dbt + DuckDB: staging → intermediate → marts → features |
-| [Candidate Generation](docs/2-candidate-generation.md) | 8 signal sources (co-visitation, Item2Vec, CV embeddings, metadata) |
-| [LambdaRank Ranking](docs/3-ranking-lambdarank.md) | LightGBM LambdaRank with 20 features, direct NDCG@5 optimization |
-| [Lessons Learned](docs/4-lessons-learned.md) | What failed, what changed, what we'd do differently |
-| [EDA Findings](docs/eda_findings.md) | Detailed exploratory analysis (93% cold-start, family structure, co-visitation) |
+| Guide                                                  | Description                                                                     |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| [Data Pipeline](docs/1-data-pipeline.md)               | dbt + DuckDB: staging → intermediate → marts → features                         |
+| [Candidate Generation](docs/2-candidate-generation.md) | 8 signal sources (co-visitation, Item2Vec, CV embeddings, metadata)             |
+| [LambdaRank Ranking](docs/3-ranking-lambdarank.md)     | LightGBM LambdaRank with 20 features, direct NDCG@5 optimization                |
+| [Lessons Learned](docs/4-lessons-learned.md)           | What failed, what changed, what we'd do differently                             |
+| [EDA Findings](docs/eda_findings.md)                   | Detailed exploratory analysis (93% cold-start, family structure, co-visitation) |
 
 **Notebook:** [exploratory analysis](notebooks/eda.ipynb)
 
@@ -102,7 +102,7 @@ Full analysis in [docs/eda_findings.md](docs/eda_findings.md). Selected findings
 ## Quick Start
 
 ```bash
-git clone https://github.com/mponsclo/session-recommender-lambdarank.git
+git clone https://github.com/Anonymous2512/E-comm.git
 cd session-recommender-lambdarank
 python -m venv .venv && source .venv/bin/activate
 
